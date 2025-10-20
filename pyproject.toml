@@ -1,0 +1,109 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skillseeker"
+version = "2.0.0"
+description = "Convert documentation websites into Claude AI skills"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Skill Seeker Contributors"}
+]
+maintainers = [
+    {name = "Skill Seeker Contributors"}
+]
+keywords = [
+    "claude",
+    "ai",
+    "documentation",
+    "scraper",
+    "skill",
+    "automation",
+    "cli",
+    "tool"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Environment :: Console",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Documentation",
+    "Topic :: Utilities"
+]
+requires-python = ">=3.7"
+dependencies = [
+    "requests>=2.25.0",
+    "beautifulsoup4>=4.9.0",
+    "click>=8.0.0",
+    "rich>=10.0.0",
+    "pyyaml>=5.4.0",
+    "textual>=0.41.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0.0",
+    "pytest-cov>=2.12.0",
+    "build>=0.7.0",
+    "twine>=3.4.0"
+]
+api = [
+    "anthropic>=0.3.0"
+]
+mcp = [
+    "mcp>=0.1.0"
+]
+all = [
+    "skillseeker[dev,api,mcp]"
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/Skill_Seekers"
+Documentation = "https://github.com/yourusername/Skill_Seekers#readme"
+Repository = "https://github.com/yourusername/Skill_Seekers"
+Issues = "https://github.com/yourusername/Skill_Seekers/issues"
+Changelog = "https://github.com/yourusername/Skill_Seekers/blob/main/CHANGELOG.md"
+
+[project.scripts]
+skillseeker = "cli.skillseeker:main"
+ss = "cli.skillseeker:main"
+
+[tool.setuptools]
+packages = ["cli", "cli.commands", "cli.core", "cli.utils_new"]
+
+[tool.setuptools.package-data]
+"*" = ["*.json", "*.md", "*.txt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+addopts = "-v --cov=cli --cov-report=term-missing"
+
+[tool.coverage.run]
+source = ["cli"]
+omit = ["*/tests/*", "*/test_*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod"
+]

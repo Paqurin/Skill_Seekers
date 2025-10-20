@@ -1,0 +1,17 @@
+# Skill Seeker CLI Requirements
+# Install with: pip install -r requirements-cli.txt
+
+# Core dependencies (already required)
+requests>=2.25.0
+beautifulsoup4>=4.9.0
+
+# CLI framework and UI
+click>=8.0.0
+rich>=10.0.0
+pyyaml>=5.4.0
+
+# Optional: API enhancement
+# anthropic>=0.3.0
+
+# Optional: MCP integration
+# mcp>=0.1.0
